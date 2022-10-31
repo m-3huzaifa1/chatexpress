@@ -44,14 +44,6 @@ app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5001;
 
-if (process.env.NODE_ENV == 'production')
-{
-  app.use('/',express.static('client/build'))
-  app.get("*",(req,res)=>{
-  res.sendFile(path.resolve(__dirname, 'client/build/index.html'))
-  });
-}
-
 const server = createServer(app);
 
 const MONGO_URL="mongodb+srv://m3huzaifa1:Huzaifa123@m3huzaifa1.uwkb6rb.mongodb.net/ZetaExpess";
