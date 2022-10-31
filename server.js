@@ -31,10 +31,6 @@ app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
 
-app.get("/", (req, res) => {
-  res.send("Server Running!");
-});
-
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/chat", authenticateUser, chatRoute);
 app.use("/api/v1/message", authenticateUser, messageRoute);
