@@ -11,7 +11,7 @@ const apiLimiter = rateLimiter({
 import authenticateUser from "../middleware/auth.js";
 
 router.post("/register",apiLimiter, register);
-router.route("/login").post(apiLimiter, login);
+router.post("/login",apiLimiter, login);
 router.route("/users").get(authenticateUser, searchUser);
 
 export default router;

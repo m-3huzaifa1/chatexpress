@@ -23,6 +23,11 @@ import chatRoute from "./routes/chat.js";
 import messageRoute from "./routes/message.js";
 
 const app = express();
+const server = createServer(app);
+
+app.get("/", (req, res) => {
+  res.send("Server Running!");
+});
 
 app.use(cors());
 app.use(logger('dev'));
@@ -35,13 +40,8 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/chat", authenticateUser, chatRoute);
 app.use("/api/v1/message", authenticateUser, messageRoute);
 
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5001;
-
-const server = createServer(app);
-
 const MONGO_URL="mongodb+srv://m3huzaifa1:Huzaifa123@m3huzaifa1.uwkb6rb.mongodb.net/ZetaExpess";
 
 const start = async () => {
@@ -56,6 +56,17 @@ const start = async () => {
 };
 
 start();
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
+
+if (process.env.NODE_ENV == 'production')
+{
+  app.use('/',express.static('client/build'))
+  app.get("*",(req,res)=>{
+  res.sendFile(path.resolve(__dirname, 'client/build/index.html'))
+  });
+}
 
 const io = new Server(server, {
   pingTimeout: 60000,
@@ -95,11 +106,3 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
-
-if (process.env.NODE_ENV == 'production')
-{
-  app.use('/',express.static('client/build'))
-  app.get("*",(req,res)=>{
-  res.sendFile(path.resolve(__dirname, 'client/build/index.html'))
-  });
-}
