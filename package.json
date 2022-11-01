@@ -9,8 +9,8 @@
     "client-install": "cd client && npm install",
     "heroku-postbuild": "npm run client-install && npm run build",
     "server": "nodemon server.js",
-    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+    "develop": "concurrently \"npm run server\" \"npm run start --prefix client\"",
+    "start": "concurrently \"npm run server\" \"npm run start --prefix client\""
   },
   "author": "Aakrut Dabhi",
   "license": "ISC",
