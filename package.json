@@ -9,7 +9,7 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "nodemon server.js",
     "develop": "concurrently \"npm run server\" \"npm run start --prefix client\"",
-    "start": "node server.js"
+    "start": "cd client && npm start"
   },
   "author": "Aakrut Dabhi",
   "license": "ISC",
