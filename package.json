@@ -5,11 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "nodemon server.js",
-    "develop": "concurrently \"npm run server\" \"npm run start --prefix client\"",
-    "start": "cd client && npm start"
+    "develop": "npm run server",
+    "start": "node server.js"
   },
   "author": "Aakrut Dabhi",
   "license": "ISC",
@@ -31,7 +29,7 @@
     "xss-clean": "^0.1.1"
   },
   "engines": {
-    "node": "16.15.1",
-    "npm": "8.19.1"    
+    "node": "16.x",
+    "npm": "8.x"    
 }
 }
