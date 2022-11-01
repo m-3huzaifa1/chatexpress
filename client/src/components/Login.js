@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 import api from "../utils/axios";
 import { addUserToLocalStorage } from "../utils/localStorage";
-import axios from "axios";
 
 const Login = () => {
   const [show, setShow] = useState(false);
