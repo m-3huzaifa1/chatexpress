@@ -5,6 +5,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "client-install": "cd client && npm install",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
