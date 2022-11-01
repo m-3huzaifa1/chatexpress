@@ -2,7 +2,7 @@ import axios from "axios";
 import { getUserFromLocalStorage } from "./localStorage";
 
 const api = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "http://localhost:5000",
 });
 
 api.interceptors.request.use((config) => {
